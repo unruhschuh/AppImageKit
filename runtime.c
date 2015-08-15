@@ -35,7 +35,7 @@ THE SOFTWARE.
 #include <unistd.h>
 #include <pthread.h>
 #include <errno.h>
-#include "/usr/include/x86_64-linux-gnu/sys/auxv.h"
+#include <sys/auxv.h>
 
 /* ======================================================== Start helper functions for icon extraction */  
 /* 
