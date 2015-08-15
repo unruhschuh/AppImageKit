@@ -65,6 +65,9 @@ mark_as_advanced(GLIB_INCLUDE_DIR GLIB_CONFIG_INCLUDE_DIR GLIB_INCLUDE_DIRS GLIB
 
 INCLUDE_DIRECTORIES(. ${GLIB_INCLUDE_DIRS})
 
+# check headers
+check_include_file(sys/auxv.h HAVE_SYS_AUXV_H)
+
 ADD_EXECUTABLE(AppRun AppRun.c)
 add_custom_command(TARGET AppRun POST_BUILD COMMAND ${CMAKE_STRIP} AppRun)
 
