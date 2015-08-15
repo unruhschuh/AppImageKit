@@ -1,6 +1,6 @@
 /**************************************************************************
 
-Copyright (c) 2005-13 Simon Peter
+Copyright (c) 2005-15 Simon Peter
 Copyright (c) 2007 Alexander Larsson
 
 All Rights Reserved.
@@ -35,7 +35,7 @@ THE SOFTWARE.
 #include <unistd.h>
 #include <pthread.h>
 #include <errno.h>
-
+#include <sys/auxv.h>
 
 /* ======================================================== Start helper functions for icon extraction */  
 /* 
@@ -237,7 +237,7 @@ main (int argc, char *argv[])
     close (keepalive_pipe[0]);
 
 
-    char *dir = realpath( "/proc/self/exe", NULL );
+    char *dir = realpath((char *)getauxval(AT_EXECFN), NULL );
 
     child_argv[0] = dir;
     child_argv[1] = mount_dir;
