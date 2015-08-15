@@ -3,6 +3,7 @@ compiler: gcc
 
 before_install:
  - sudo apt-add-repository -y ppa:vala-team/ppa
+ - sudo apt-add-repository 'deb http://archive.ubuntu.com/ubuntu/ vivid main'
  - sudo apt-get update -qq
  - sudo apt-get install -qq libfuse-dev libglib2.0-dev cmake libc6-dev binutils valac libgee-0.8-dev gcc-multilib g++-multilib libc6-dev-i386
  - wget http://security.ubuntu.com/ubuntu/pool/main/e/eglibc/libc6-dev_2.19-0ubuntu6.6_amd64.deb
@@ -14,7 +15,7 @@ before_install:
  - cd -
 
 script: 
- - # export CC='gcc -U_FORTIFY_SOURCE -include /usr/include/libcwrap.h'
+ - export CC='gcc -U_FORTIFY_SOURCE -include /usr/include/libcwrap.h'
  - cmake . && make
  - find . -type f
 
