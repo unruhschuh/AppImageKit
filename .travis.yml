@@ -2,6 +2,7 @@ language: c
 compiler: gcc
 
 before_install:
+ - sudo rm /etc/dpkg/dpkg.cfg.d/multiarch
  - sudo apt-add-repository -y ppa:vala-team/ppa
  - sudo apt-add-repository -y 'deb http://archive.ubuntu.com/ubuntu/ vivid main'
  - sudo apt-get update -qq
