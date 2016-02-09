@@ -35,6 +35,7 @@ THE SOFTWARE.
 #include <unistd.h>
 #include <pthread.h>
 #include <errno.h>
+#include <unistd.h>
 
 
 /* ======================================================== Start helper functions for icon extraction */  
@@ -359,6 +360,11 @@ main (int argc, char *argv[])
     /* Setting some environment variables that the app "inside" might use */
     setenv( "APPIMAGE", fullpath, 1 );
     setenv( "APPDIR", mount_dir, 1 );
+
+    char cwd[1024];
+    getcwd( cwd, sizeof(cwd) );
+    setenv( "ORIGCWD", cwd, 1 );
+
     execv (filename, real_argv);
     /* Error if we continue here */
     perror ("execv error: ");
